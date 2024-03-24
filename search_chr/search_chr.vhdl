@@ -11,7 +11,7 @@ entity search_chr is
     start   : in std_logic; --! Start signal
     address : in std_logic_vector(31 downto 0); --! Address to start searching from
     len     : in std_logic_vector(5 downto 0); --! Length of the data to search
-    nfound  : out std_logic(5 downto 0); --! Number of occurrences found
+    nfound  : out std_logic_vector(5 downto 0); --! Number of occurrences found
     ready   : out std_logic; --! Ready signal
 
     -- Memory interface
@@ -20,7 +20,7 @@ entity search_chr is
     mem_addr    : out std_logic_vector(31 downto 0); --! Address bus for the memory
     mem_datain  : in std_logic_vector(7 downto 0); --! Incoming memory word
     mem_dataout : out std_logic_vector(7 downto 0); --! Outgoing memory word
-    mem_ready   : in std_logic; --! Ready signal from the memory
+    mem_ready   : in std_logic --! Ready signal from the memory
 
   );
 end entity search_chr;
@@ -45,6 +45,15 @@ begin
         else
           nextstate <= INIT;
         end if;
+      when START_READ =>
+        -- Add code for START_READ state here
+
+      when FETCH =>
+        -- Add code for FETCH state here
+
+      when COMPARE =>
+        -- Add code for COMPARE state here
+
     end case;
   end process;
 
