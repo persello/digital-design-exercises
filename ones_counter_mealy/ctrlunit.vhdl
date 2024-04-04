@@ -19,7 +19,7 @@ entity ctrlunit is
     a_load    : out std_logic; --! Load the A register in the datapath
     a_sel     : out std_logic; --! Select the data source for the A register: X or <A> >> 1
     ones_load : out std_logic; --! Load the ones register in the datapath
-    ones_sel  : out std_logic; --! Select the data source for the ones register: 0 or <ones> + 1
+    ones_sel  : out std_logic_vector(1 downto 0); --! Select the data source for the ones register: 0, 1 or <ones> + 1
 
     -- Status signals
     a_lsb     : in std_logic; --! The LSB of the A register
@@ -28,7 +28,7 @@ entity ctrlunit is
 end entity ctrlunit;
 
 architecture behav of ctrlunit is
-  type statetype is (INIT, START, INC, SHIFT, CALC_A, WAIT_DATA);
+  type statetype is (INIT, START, SHIFT, CALC_A, WAIT_DATA);
   signal state, nextstate : statetype;
 
 begin
@@ -37,7 +37,7 @@ begin
   state <= INIT when reset_n = '0' else
     nextstate when rising_edge(clk);
 
-  fsm: process (state, datain, calc, a_lsb, a_is_zero)
+  fsm : process (state, datain, calc, a_lsb, a_is_zero)
   begin
     case state is
       when INIT =>
@@ -50,45 +50,26 @@ begin
         end if;
 
       when START =>
-        if a_lsb = '0' then
-          nextstate <= SHIFT;
-        else
-          nextstate <= INC;
-        end if;
-
-      when INC =>
-        if a_is_zero = '1' then
-          nextstate <= WAIT_DATA;
-        elsif a_lsb = '1' then
-          nextstate <= INC;
-        else
-          nextstate <= SHIFT;
-        end if;
+        nextstate <= SHIFT;
 
       when SHIFT =>
-        if a_is_zero = '1' then
+        if a_is_zero = '0' then
+          nextstate <= SHIFT;
+        else
           nextstate <= WAIT_DATA;
-        elsif a_lsb = '1' then
-          nextstate <= INC;
-        else
-          nextstate <= SHIFT;
-        end if;
-
-      when CALC_A =>
-        if a_lsb = '0' then
-          nextstate <= SHIFT;
-        else
-          nextstate <= INC;
         end if;
 
       when WAIT_DATA =>
-        if CALC = '1' then
+        if calc = '1' then
           nextstate <= INIT;
-        elsif DATAIN = '0' then
+        elsif datain = '0' then
           nextstate <= WAIT_DATA;
         else
           nextstate <= CALC_A;
         end if;
+
+      when CALC_A =>
+        nextstate <= SHIFT;
 
       when others =>
         nextstate <= INIT;
@@ -96,21 +77,19 @@ begin
   end process;
 
   -- Outputs
-  a_load <= '1' when state = INIT or state = START or
-    state = INC or state = SHIFT or state = WAIT_DATA or state = CALC_A else
-    '0';
+  a_load <= '1';
 
   a_sel <= '1' when state = START or state = SHIFT or
-    state = INC or
     state = CALC_A else
-    '0';
+    '0'; -- '1' loads A << 1, '0' loads X.
 
   ones_load <= '1' when state = START or
-    state = INC else
+    (state = SHIFT and a_lsb = '1') or
+    (state = CALC_A and a_lsb = '1') else
     '0';
 
-  ones_sel <= '1' when state = INC else
-    '0';
+  ones_sel <= ('0' & a_lsb) when state = START else
+    "10";
 
   READY <= '1' when state = INIT or state = WAIT_DATA else
     '0';

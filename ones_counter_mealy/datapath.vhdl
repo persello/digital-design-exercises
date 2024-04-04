@@ -18,7 +18,7 @@ entity datapath is
     a_load    : in std_logic; --! Load the A register in the datapath
     a_sel     : in std_logic; --! Select the data source for the A register: X or <A> >> 1
     ones_load : in std_logic; --! Load the ones register in the datapath
-    ones_sel  : in std_logic; --! Select the data source for the ones register: 0 or <ones> + 1
+    ones_sel  : in std_logic_vector(1 downto 0); --! Select the data source for the ones register: 0, 1 or <ones> + 1
 
     -- Status signals
     a_lsb     : out std_logic; --! The least significant bit of the A register
@@ -47,7 +47,8 @@ begin
   a_in <= x when a_sel = '0' else
     '0' & R_a(7 downto 1);
 
-  ones_in <= (others => '0') when ones_sel = '0' else
+  ones_in <= (others => '0') when ones_sel = "00" else
+    "00000001" when ones_sel = "01" else
     adder1;
 
   -- Adder

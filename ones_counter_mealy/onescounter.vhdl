@@ -29,7 +29,7 @@ architecture struct of onescounter is
   signal a_sel  : std_logic;
 
   signal ones_load : std_logic;
-  signal ones_sel  : std_logic;
+  signal ones_sel  : std_logic_vector(1 downto 0);
 
   signal a_lsb     : std_logic;
   signal a_is_zero : std_logic;
