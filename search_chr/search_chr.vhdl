@@ -66,7 +66,7 @@ begin
   state <= INIT when rst_n = '0' else
     next_state when rising_edge(clk);
 
-  fsm : process (clk, start, mem_ready)
+  fsm : process (clk, start, mem_ready, count_eq_l)
   begin
     case state is
       when INIT =>
@@ -83,7 +83,7 @@ begin
           next_state <= FETCH;
         end if;
       when COMPARE =>
-        if COUNT_eq_L = '1' then
+        if count_eq_L = '1' then
           next_state <= INIT;
         else
           next_state <= FETCH;
