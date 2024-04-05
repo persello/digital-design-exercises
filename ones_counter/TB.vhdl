@@ -18,7 +18,7 @@ architecture behav of TB is
 
   -- To the DUT
   signal clk, reset_n : std_logic;
-  signal x            : std_logic_vector(7 downto 0) := (others => '0');
+  signal x            : std_logic_vector(7 downto 0) := (others => '0'); -- Initial value in order to avoid simulation warnings.
   signal datain       : std_logic := '0';
   signal calc         : std_logic := '0';
 
