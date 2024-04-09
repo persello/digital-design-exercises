@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+
 -- Interface
 entity ctrlunit is
   port
@@ -15,7 +16,7 @@ entity ctrlunit is
     ready : out std_logic; --! The device signals that it is ready to receive new data
     ok    : out std_logic; --! The device signals that it has finished the calculation
 
-    --! The control unit
+    -- Datapath control signals
     a_load    : out std_logic; --! Load the A register in the datapath
     a_sel     : out std_logic; --! Select the data source for the A register: X or <A> >> 1
     ones_load : out std_logic; --! Load the ones register in the datapath
