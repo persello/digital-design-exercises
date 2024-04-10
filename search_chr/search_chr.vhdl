@@ -145,7 +145,8 @@ begin
   mem_dataout <= (others => '-');
   n_found     <= reg_FOUND;
   mem_we      <= '0';
-  mem_enable  <= '1';
+  mem_enable  <= '1' when state = FETCH else
+    '0';
   ready       <= '1' when state = INIT else
     '0';
 
