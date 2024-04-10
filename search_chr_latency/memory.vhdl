@@ -47,7 +47,7 @@ architecture s of memory is
   shared variable ram : ram_type := loadmem;
 
 begin
-  process (clk)
+  process (clk, enable)
   begin
     if enable = '0' then
       ready <= '0';
@@ -58,7 +58,7 @@ begin
         RAM(to_integer(unsigned(address))) := to_bitvector(datain);
         dataout <= (others => '-'); -- writing policy not specified
       else
-        dataout <= to_stdlogicvector(RAM(to_integer(unsigned(address)))) after 50 ns;
+        dataout <= to_stdlogicvector(RAM(to_integer(unsigned(address))));
       end if;
 
       ready <= '1' after 50 ns;

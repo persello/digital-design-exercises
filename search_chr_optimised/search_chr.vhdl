@@ -66,7 +66,7 @@ begin
   state <= INIT when rst_n = '0' else
     next_state when rising_edge(clk);
 
-  fsm : process (state, start, mem_ready, count_eq_l)
+  fsm : process (clk, start, mem_ready, count_eq_l)
   begin
     case state is
       when INIT =>
@@ -145,7 +145,7 @@ begin
   mem_dataout <= (others => '-');
   n_found     <= reg_FOUND;
   mem_we      <= '0';
-  mem_enable  <= '1' when state = START_READ or (state = COMPARE and count_eq_L = '0') else
+  mem_enable  <= '1' when state = FETCH else
     '0';
   ready       <= '1' when state = INIT else
     '0';

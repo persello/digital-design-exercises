@@ -49,6 +49,9 @@ architecture s of memory is
 begin
   process (clk)
   begin
+    if enable = '0' then
+      ready <= '0';
+    end if;
 
     if rising_edge(CLK) and enable = '1' then
       if we = '1' then
@@ -57,9 +60,10 @@ begin
       else
         dataout <= to_stdlogicvector(RAM(to_integer(unsigned(address))));
       end if;
+
+      ready <= '1' after 0 ns;
     end if;
 
-    ready <= '1';
-
+    
   end process;
 end architecture;
