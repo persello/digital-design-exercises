@@ -45,6 +45,7 @@ architecture s of memory is
   end function;
 
   shared variable ram : ram_type := loadmem;
+  constant latency : time := 27 ns;
 
 begin
   process (clk)
@@ -55,11 +56,10 @@ begin
         RAM(to_integer(unsigned(address))) := to_bitvector(datain);
         dataout <= (others => '-'); -- writing policy not specified
       else
-        dataout <= to_stdlogicvector(RAM(to_integer(unsigned(address))));
+        dataout <= (others => '-'), to_stdlogicvector(RAM(to_integer(unsigned(address)))) after latency;
+        ready   <= '0', '1' after latency;
       end if;
     end if;
-
-    ready <= '1';
-
   end process;
+
 end architecture;
