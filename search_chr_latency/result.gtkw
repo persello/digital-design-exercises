@@ -1,0 +1,102 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Wed Apr  3 13:44:27 2024
+[*]
+[dumpfile] "/Users/riccardo/.teroshdl/build/wave.ghw"
+[dumpfile_mtime] "Wed Apr  3 13:42:12 2024"
+[dumpfile_size] 7992
+[savefile] "/Users/riccardo/Documents/Università/Magistrale/Calcolatori_Elettronici/Projects/search_chr/result.gtkw"
+[timestart] 361900000
+[size] 1680 1050
+[pos] -1 -1
+*-25.000000 165700000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.testbench.
+[sst_width] 253
+[signals_width] 169
+[sst_expanded] 1
+[sst_vpaned_height] 316
+@22
+[color] 2
+#{top.testbench.mem.address[31:0]} top.testbench.mem.address[31] top.testbench.mem.address[30] top.testbench.mem.address[29] top.testbench.mem.address[28] top.testbench.mem.address[27] top.testbench.mem.address[26] top.testbench.mem.address[25] top.testbench.mem.address[24] top.testbench.mem.address[23] top.testbench.mem.address[22] top.testbench.mem.address[21] top.testbench.mem.address[20] top.testbench.mem.address[19] top.testbench.mem.address[18] top.testbench.mem.address[17] top.testbench.mem.address[16] top.testbench.mem.address[15] top.testbench.mem.address[14] top.testbench.mem.address[13] top.testbench.mem.address[12] top.testbench.mem.address[11] top.testbench.mem.address[10] top.testbench.mem.address[9] top.testbench.mem.address[8] top.testbench.mem.address[7] top.testbench.mem.address[6] top.testbench.mem.address[5] top.testbench.mem.address[4] top.testbench.mem.address[3] top.testbench.mem.address[2] top.testbench.mem.address[1] top.testbench.mem.address[0]
+@28
+[color] 2
+top.testbench.mem.clk
+@22
+[color] 2
+#{top.testbench.mem.datain[7:0]} top.testbench.mem.datain[7] top.testbench.mem.datain[6] top.testbench.mem.datain[5] top.testbench.mem.datain[4] top.testbench.mem.datain[3] top.testbench.mem.datain[2] top.testbench.mem.datain[1] top.testbench.mem.datain[0]
+[color] 2
+#{top.testbench.mem.dataout[7:0]} top.testbench.mem.dataout[7] top.testbench.mem.dataout[6] top.testbench.mem.dataout[5] top.testbench.mem.dataout[4] top.testbench.mem.dataout[3] top.testbench.mem.dataout[2] top.testbench.mem.dataout[1] top.testbench.mem.dataout[0]
+@28
+[color] 2
+top.testbench.mem.enable
+[color] 2
+top.testbench.mem.ready
+[color] 2
+top.testbench.mem.we
+@420
+[color] 1
+top.testbench.dut.state
+[color] 1
+top.testbench.dut.next_state
+@22
+#{top.testbench.dut.n_found[5:0]} top.testbench.dut.n_found[5] top.testbench.dut.n_found[4] top.testbench.dut.n_found[3] top.testbench.dut.n_found[2] top.testbench.dut.n_found[1] top.testbench.dut.n_found[0]
+@28
+top.testbench.dut.ready
+@22
+[color] 7
+#{top.testbench.dut.reg_a[31:0]} top.testbench.dut.reg_a[31] top.testbench.dut.reg_a[30] top.testbench.dut.reg_a[29] top.testbench.dut.reg_a[28] top.testbench.dut.reg_a[27] top.testbench.dut.reg_a[26] top.testbench.dut.reg_a[25] top.testbench.dut.reg_a[24] top.testbench.dut.reg_a[23] top.testbench.dut.reg_a[22] top.testbench.dut.reg_a[21] top.testbench.dut.reg_a[20] top.testbench.dut.reg_a[19] top.testbench.dut.reg_a[18] top.testbench.dut.reg_a[17] top.testbench.dut.reg_a[16] top.testbench.dut.reg_a[15] top.testbench.dut.reg_a[14] top.testbench.dut.reg_a[13] top.testbench.dut.reg_a[12] top.testbench.dut.reg_a[11] top.testbench.dut.reg_a[10] top.testbench.dut.reg_a[9] top.testbench.dut.reg_a[8] top.testbench.dut.reg_a[7] top.testbench.dut.reg_a[6] top.testbench.dut.reg_a[5] top.testbench.dut.reg_a[4] top.testbench.dut.reg_a[3] top.testbench.dut.reg_a[2] top.testbench.dut.reg_a[1] top.testbench.dut.reg_a[0]
+[color] 7
+#{top.testbench.dut.reg_a_in[31:0]} top.testbench.dut.reg_a_in[31] top.testbench.dut.reg_a_in[30] top.testbench.dut.reg_a_in[29] top.testbench.dut.reg_a_in[28] top.testbench.dut.reg_a_in[27] top.testbench.dut.reg_a_in[26] top.testbench.dut.reg_a_in[25] top.testbench.dut.reg_a_in[24] top.testbench.dut.reg_a_in[23] top.testbench.dut.reg_a_in[22] top.testbench.dut.reg_a_in[21] top.testbench.dut.reg_a_in[20] top.testbench.dut.reg_a_in[19] top.testbench.dut.reg_a_in[18] top.testbench.dut.reg_a_in[17] top.testbench.dut.reg_a_in[16] top.testbench.dut.reg_a_in[15] top.testbench.dut.reg_a_in[14] top.testbench.dut.reg_a_in[13] top.testbench.dut.reg_a_in[12] top.testbench.dut.reg_a_in[11] top.testbench.dut.reg_a_in[10] top.testbench.dut.reg_a_in[9] top.testbench.dut.reg_a_in[8] top.testbench.dut.reg_a_in[7] top.testbench.dut.reg_a_in[6] top.testbench.dut.reg_a_in[5] top.testbench.dut.reg_a_in[4] top.testbench.dut.reg_a_in[3] top.testbench.dut.reg_a_in[2] top.testbench.dut.reg_a_in[1] top.testbench.dut.reg_a_in[0]
+@28
+[color] 7
+top.testbench.dut.reg_a_ld
+@23
+[color] 6
+#{top.testbench.dut.reg_c[7:0]} top.testbench.dut.reg_c[7] top.testbench.dut.reg_c[6] top.testbench.dut.reg_c[5] top.testbench.dut.reg_c[4] top.testbench.dut.reg_c[3] top.testbench.dut.reg_c[2] top.testbench.dut.reg_c[1] top.testbench.dut.reg_c[0]
+@22
+[color] 6
+#{top.testbench.dut.reg_c_in[7:0]} top.testbench.dut.reg_c_in[7] top.testbench.dut.reg_c_in[6] top.testbench.dut.reg_c_in[5] top.testbench.dut.reg_c_in[4] top.testbench.dut.reg_c_in[3] top.testbench.dut.reg_c_in[2] top.testbench.dut.reg_c_in[1] top.testbench.dut.reg_c_in[0]
+@28
+[color] 6
+top.testbench.dut.reg_c_ld
+@22
+[color] 5
+#{top.testbench.dut.reg_count[5:0]} top.testbench.dut.reg_count[5] top.testbench.dut.reg_count[4] top.testbench.dut.reg_count[3] top.testbench.dut.reg_count[2] top.testbench.dut.reg_count[1] top.testbench.dut.reg_count[0]
+[color] 5
+#{top.testbench.dut.reg_count_in[5:0]} top.testbench.dut.reg_count_in[5] top.testbench.dut.reg_count_in[4] top.testbench.dut.reg_count_in[3] top.testbench.dut.reg_count_in[2] top.testbench.dut.reg_count_in[1] top.testbench.dut.reg_count_in[0]
+@28
+[color] 5
+top.testbench.dut.reg_count_ld
+@22
+[color] 4
+#{top.testbench.dut.reg_d[7:0]} top.testbench.dut.reg_d[7] top.testbench.dut.reg_d[6] top.testbench.dut.reg_d[5] top.testbench.dut.reg_d[4] top.testbench.dut.reg_d[3] top.testbench.dut.reg_d[2] top.testbench.dut.reg_d[1] top.testbench.dut.reg_d[0]
+[color] 4
+#{top.testbench.dut.reg_d_in[7:0]} top.testbench.dut.reg_d_in[7] top.testbench.dut.reg_d_in[6] top.testbench.dut.reg_d_in[5] top.testbench.dut.reg_d_in[4] top.testbench.dut.reg_d_in[3] top.testbench.dut.reg_d_in[2] top.testbench.dut.reg_d_in[1] top.testbench.dut.reg_d_in[0]
+@28
+[color] 4
+top.testbench.dut.reg_d_ld
+@22
+[color] 3
+#{top.testbench.dut.reg_found[5:0]} top.testbench.dut.reg_found[5] top.testbench.dut.reg_found[4] top.testbench.dut.reg_found[3] top.testbench.dut.reg_found[2] top.testbench.dut.reg_found[1] top.testbench.dut.reg_found[0]
+[color] 3
+#{top.testbench.dut.reg_found_in[5:0]} top.testbench.dut.reg_found_in[5] top.testbench.dut.reg_found_in[4] top.testbench.dut.reg_found_in[3] top.testbench.dut.reg_found_in[2] top.testbench.dut.reg_found_in[1] top.testbench.dut.reg_found_in[0]
+@28
+[color] 3
+top.testbench.dut.reg_found_ld
+@22
+[color] 2
+#{top.testbench.dut.reg_l[5:0]} top.testbench.dut.reg_l[5] top.testbench.dut.reg_l[4] top.testbench.dut.reg_l[3] top.testbench.dut.reg_l[2] top.testbench.dut.reg_l[1] top.testbench.dut.reg_l[0]
+[color] 2
+#{top.testbench.dut.reg_l_in[5:0]} top.testbench.dut.reg_l_in[5] top.testbench.dut.reg_l_in[4] top.testbench.dut.reg_l_in[3] top.testbench.dut.reg_l_in[2] top.testbench.dut.reg_l_in[1] top.testbench.dut.reg_l_in[0]
+@28
+[color] 2
+top.testbench.dut.reg_l_ld
+@420
+top.testbench.tb_state
+top.testbench.tb_next_state
+@28
+top.testbench.dut.rst_n
+top.testbench.dut.start
+[pattern_trace] 1
+[pattern_trace] 0

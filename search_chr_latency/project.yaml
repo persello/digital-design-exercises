@@ -1,4 +1,4 @@
-name: search_chr
+name: search_chr_latency
 project_disk_path: ""
 project_type: genericProject
 toplevel: "testbench.vhdl"
