@@ -29,7 +29,7 @@ end entity search_chr;
 architecture rtl of search_chr is
 
   -- State
-  type state_t is (INIT, START_READ, FETCH, COMPARE);
+  type state_t is (INIT, START_READ, FETCH_COMPARE);
   signal state, next_state : state_t;
 
   -- Registers
@@ -75,18 +75,16 @@ begin
         else
           next_state <= INIT;
         end if;
-      when START_READ => next_state <= FETCH;
-      when FETCH      =>
-        if mem_ready = '1' then
-          next_state <= COMPARE;
+      when START_READ => next_state <= FETCH_COMPARE;
+      when FETCH_COMPARE      =>
+        if mem_ready = '0' then
+          next_state <= FETCH_COMPARE;
         else
-          next_state <= FETCH;
-        end if;
-      when COMPARE =>
-        if count_eq_L = '1' then
-          next_state <= INIT;
-        else
-          next_state <= FETCH;
+          if count_eq_L = '1' then
+            next_state <= INIT;
+          else
+            next_state <= FETCH_COMPARE;
+          end if;
         end if;
     end case;
   end process;
@@ -114,22 +112,22 @@ begin
     std_logic_vector(unsigned(reg_FOUND) + 1);
 
   -- Load logic
-  reg_A_ld <= '1' when (state = INIT and start = '1') or (state = FETCH and mem_ready = '1') else
+  reg_A_ld <= '1' when (state = INIT and start = '1') or (state = FETCH_COMPARE and mem_ready = '1') else
     '0';
 
   reg_C_ld <= '1' when (state = INIT and start = '1') else
     '0';
 
-  reg_D_ld <= '1' when (state = FETCH and mem_ready = '1') else
+  reg_D_ld <= '1' when (state = FETCH_COMPARE and mem_ready = '1') else
     '0';
 
   reg_L_ld <= '1' when (state = INIT and start = '1') else
     '0';
 
-  reg_COUNT_ld <= '1' when state = INIT or (state = FETCH and mem_ready = '1') else
+  reg_COUNT_ld <= '1' when state = INIT or (state = FETCH_COMPARE and mem_ready = '1') else
     '0';
 
-  reg_FOUND_ld <= '1' when (state = INIT and start = '1') or (state = COMPARE and c_eq_d = '1') else
+  reg_FOUND_ld <= '1' when (state = INIT and start = '1') or (state = FETCH_COMPARE and mem_ready = '1' and c_eq_d = '1') else
     '0';
 
   -- Registers assignments
@@ -141,11 +139,12 @@ begin
   reg_FOUND <= reg_FOUND_in when rising_edge(clk) and reg_FOUND_ld = '1';
 
   -- Outputs
-  mem_addr <= reg_A when state = START_READ or (state = COMPARE and count_eq_L = '0') else (others => '-');
+  mem_addr <= reg_A when state = START_READ or (state = FETCH_COMPARE and mem_ready = '1' and count_eq_L = '0') else
+    (others                => '-');
   mem_dataout <= (others => '-');
   n_found     <= reg_FOUND;
   mem_we      <= '0';
-  mem_enable  <= '1' when state = START_READ or (state = COMPARE and count_eq_L = '0') else
+  mem_enable  <= '1' when state = START_READ or (state = FETCH_COMPARE and mem_ready = '1' and count_eq_L = '0') else
     '0';
   ready <= '1' when state = INIT else
     '0';
